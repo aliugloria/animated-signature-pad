@@ -16,7 +16,7 @@ const colorOptions = [
 
 const DEFAULT_COLOR = "#000000";
 const REWIND_DURATION = 600;
-const SIGNED_COLOR = "#000";  
+const SIGNED_COLOR = "#000";
 
 const SignaturePad = ({
   isOpen,
@@ -183,7 +183,7 @@ const SignaturePad = ({
       sigDurationRef.current = duration;
       setSvgPath(path);
       setShowSvg(true);
-      isHoldingRef.current = true; 
+      isHoldingRef.current = true;
       return;
     }
 
@@ -224,7 +224,7 @@ const SignaturePad = ({
               <div className="flex items-center gap-4">
                 <p className="flex items-center gap-1">
                   <PenLine size={20} aria-label="draw-signature" />
-                  Draw signature
+                  <span className="hidden md:block">Draw signature</span>
                 </p>
                 <CirclePlay
                   size={20}
@@ -236,7 +236,6 @@ const SignaturePad = ({
                       : "opacity-30 cursor-not-allowed"
                   }`}
                 />
-              
               </div>
               <div className="flex items-center gap-2">
                 {colorOptions.map((item) => (
