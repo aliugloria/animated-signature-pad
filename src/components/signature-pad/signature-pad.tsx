@@ -34,7 +34,6 @@ const SignaturePad = ({
   const canvasRef = useRef<SignatureCanvasHandle>(null);
   const coloredPathRef = useRef<SVGPathElement>(null);
 
-  // The fill div inside the button — driven directly by RAF, no re-renders
   const buttonFillRef = useRef<HTMLDivElement>(null);
 
   const animFrameRef = useRef<number | null>(null);
@@ -52,7 +51,6 @@ const SignaturePad = ({
     lastTimeRef.current = null;
   };
 
-  // progress 0→1 drives both the signature path and the button fill
   const applyProgress = (progress: number) => {
     if (coloredPathRef.current) {
       const offset = pathLengthRef.current * (1 - progress);
@@ -180,18 +178,15 @@ const SignaturePad = ({
     isHoldingRef.current = false;
 
     if (!showSvg) {
-      // SVG not showing yet — convert and show, animation auto-starts in useEffect
-      // But we want replay to auto-play, so set a flag
       const path = canvasRef.current?.getSvgPath() ?? "";
       const duration = canvasRef.current?.getSigningDuration() ?? 2000;
       sigDurationRef.current = duration;
       setSvgPath(path);
       setShowSvg(true);
-      isHoldingRef.current = true; // tricks useEffect into auto-starting
+      isHoldingRef.current = true; 
       return;
     }
 
-    // SVG already showing — reset offset to beginning and play
     if (coloredPathRef.current) {
       currentOffsetRef.current = pathLengthRef.current;
       coloredPathRef.current.style.strokeDashoffset = `${pathLengthRef.current}`;
@@ -320,7 +315,6 @@ const SignaturePad = ({
                   backgroundColor: isSigned ? SIGNED_COLOR : "#e5e7eb",
                 }}
               >
-                {/* Fill layer — scales from left on hold, driven by RAF */}
                 {!isSigned && (
                   <div
                     ref={buttonFillRef}
