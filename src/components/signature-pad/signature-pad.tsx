@@ -209,7 +209,7 @@ const SignaturePad = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="fixed inset-0 z-1000 flex items-center justify-center px-4"
+          className="fixed inset-0 z-1000 flex items-center justify-center px-4 bg-black/30 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
@@ -217,7 +217,7 @@ const SignaturePad = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative flex flex-col justify-between bg-white rounded-lg w-full max-w-2xl h-[500px] py-8 px-4 shadow-md border-2 border-slate-300"
+            className="relative flex flex-col justify-between bg-white rounded-lg w-full max-w-2xl h-[500px] py-8 px-4 shadow-2xl border-2 border-slate-300"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between">
@@ -254,7 +254,7 @@ const SignaturePad = ({
               </div>
             </div>
 
-            <div className="relative flex-1 my-4 border border-dashed border-slate-200 rounded-md overflow-hidden">
+            <div className="relative flex-1 my-4 border border-dashed border-slate-200 rounded-md overflow-hidden z-50">
               <div className={`w-full h-full ${showSvg ? "hidden" : "block"}`}>
                 <SignatureCanvas
                   ref={canvasRef}
