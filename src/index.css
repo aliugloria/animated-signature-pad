@@ -5,7 +5,8 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg:linear-gradient(180deg, #e0f0ff 0%, #f8fafc 50%, #ffd6d6 80%, #fff 100%);
+  --bg:white;
+  /* --bg:linear-gradient(180deg, #e0f0ff 0%, #f8fafc 50%, #ffd6d6 80%, #fff 100%); */
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;

@@ -4,18 +4,25 @@ import { useRef, useState, useEffect } from "react";
 import type { SignatureCanvasHandle } from "./signature-canvas";
 import SignatureCanvas from "./signature-canvas";
 
+// const colorOptions = [
+//   { id: 1, color: "#FF0000" },
+//   { id: 2, color: "#00FF00" },
+//   { id: 3, color: "#0000FF" },
+//   { id: 4, color: "#00FFFF" },
+//   { id: 5, color: "#FF00FF" },
+//   { id: 6, color: "#FFFF00" },
+//   { id: 7, color: "#000000" },
+// ];
+
 const colorOptions = [
   { id: 1, color: "#FF0000" },
-  { id: 2, color: "#00FF00" },
-  { id: 3, color: "#0000FF" },
-  { id: 4, color: "#00FFFF" },
-  { id: 5, color: "#FF00FF" },
-  { id: 6, color: "#FFFF00" },
-  { id: 7, color: "#000000" },
+  { id: 2, color: "#0000FF" },
+  { id: 3, color: "#FF00FF" },
+  { id: 4, color: "#000000" },
 ];
 
 const DEFAULT_COLOR = "#000000";
-const REWIND_DURATION = 600;
+// const REWIND_DURATION = 600;
 const SIGNED_COLOR = "#000";
 
 const SignaturePad = ({
@@ -94,7 +101,8 @@ const SignaturePad = ({
       const delta = timestamp - lastTimeRef.current;
       lastTimeRef.current = timestamp;
 
-      const speed = pathLengthRef.current / REWIND_DURATION;
+      // const speed = pathLengthRef.current / REWIND_DURATION;
+      const speed = pathLengthRef.current / (sigDurationRef.current * 0.9);
       currentOffsetRef.current = Math.min(
         pathLengthRef.current,
         currentOffsetRef.current + speed * delta,
@@ -138,7 +146,7 @@ const SignaturePad = ({
 
     if (!showSvg) {
       const path = canvasRef.current?.getSvgPath() ?? "";
-      const duration = canvasRef.current?.getSigningDuration() ?? 2000;
+      const duration = canvasRef.current?.getSigningDuration() ?? 5000;
       sigDurationRef.current = duration;
       setSvgPath(path);
       setShowSvg(true);
@@ -179,7 +187,7 @@ const SignaturePad = ({
 
     if (!showSvg) {
       const path = canvasRef.current?.getSvgPath() ?? "";
-      const duration = canvasRef.current?.getSigningDuration() ?? 2000;
+      const duration = canvasRef.current?.getSigningDuration() ?? 5000;
       sigDurationRef.current = duration;
       setSvgPath(path);
       setShowSvg(true);
@@ -209,7 +217,8 @@ const SignaturePad = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="fixed inset-0 z-1000 flex items-center justify-center px-4 bg-black/30 backdrop-blur-sm"
+          className="fixed inset-0 z-1000 flex items-center justify-center px-4 bg-black/0 backdrop-blur-sm"
+          // className="fixed inset-0 z-1000 flex items-center justify-center px-4 bg-black/30 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div

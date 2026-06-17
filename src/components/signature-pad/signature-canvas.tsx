@@ -55,7 +55,8 @@ import {
           const firstPoint = strokes[0][0];
           const lastStroke = strokes[strokes.length - 1];
           const lastPoint = lastStroke[lastStroke.length - 1];
-          return Math.max(lastPoint.t - firstPoint.t, 500);
+          const actual = Math.max(lastPoint.t - firstPoint.t, 500);
+          return actual * 3;
         },
       }));
   

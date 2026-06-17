@@ -30,14 +30,14 @@ const Socials = () => {
             </a>
           </li>
 
-          <li>
+          <li >
             <a href="https://www.linkedin.com/in/gloria-aliu/" target="_blank">
               <svg
-                className="button-icon"
+                className="button-icon border border-gray-400 rounded-xs"
                 role="presentation"
                 aria-hidden="true"
               >
-                <use href="/icons.svg#bluesky-icon"></use>
+                <use href="/icons.svg#linkedin-icon"></use>
               </svg>
               Linkedin
             </a>
@@ -49,3 +49,6 @@ const Socials = () => {
 };
 
 export default Socials;
+
+{/* <rect x="2" y="9" width="4" height="12" /> */}
+// fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35"
