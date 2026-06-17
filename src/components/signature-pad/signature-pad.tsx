@@ -4,16 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import type { SignatureCanvasHandle } from "./signature-canvas";
 import SignatureCanvas from "./signature-canvas";
 
-// const colorOptions = [
-//   { id: 1, color: "#FF0000" },
-//   { id: 2, color: "#00FF00" },
-//   { id: 3, color: "#0000FF" },
-//   { id: 4, color: "#00FFFF" },
-//   { id: 5, color: "#FF00FF" },
-//   { id: 6, color: "#FFFF00" },
-//   { id: 7, color: "#000000" },
-// ];
-
 const colorOptions = [
   { id: 1, color: "#FF0000" },
   { id: 2, color: "#0000FF" },
@@ -218,7 +208,6 @@ const SignaturePad = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
           className="fixed inset-0 z-1000 flex items-center justify-center px-4 bg-black/0 backdrop-blur-sm"
-          // className="fixed inset-0 z-1000 flex items-center justify-center px-4 bg-black/30 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
@@ -226,13 +215,13 @@ const SignaturePad = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative flex flex-col justify-between bg-white rounded-lg w-full max-w-2xl h-[500px] py-8 px-4 shadow-2xl border-2 border-slate-300"
+            className="relative flex flex-col justify-between bg-white rounded-lg w-full md:max-w-xl h-[500px] md:h-[400px] py-4 px-4 shadow-2xl border-2 border-slate-300"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between">
               <div className="flex items-center gap-4">
-                <p className="flex items-center gap-1">
-                  <PenLine size={20} aria-label="draw-signature" />
+                <p className="flex items-center gap-1 text-sm">
+                  <PenLine size={15} aria-label="draw-signature" />
                   <span className="hidden md:block">Draw signature</span>
                 </p>
                 <CirclePlay
@@ -251,7 +240,7 @@ const SignaturePad = ({
                   <div
                     key={item.id}
                     onClick={() => setSelectedColor(item.color)}
-                    className={`rounded-full h-6 w-6 shadow-md cursor-pointer border-2 transition-all ${
+                    className={`rounded-full h-4 w-4 shadow-md cursor-pointer border-2 transition-all ${
                       selectedColor === item.color
                         ? "scale-125 border-slate-400"
                         : "border-transparent"
@@ -312,7 +301,7 @@ const SignaturePad = ({
                   handleHoldStart();
                 }}
                 onTouchEnd={handleHoldEnd}
-                className={`relative overflow-hidden p-2 px-4 rounded-md font-medium transition-colors select-none ${
+                className={`relative overflow-hidden p-2 px-4 rounded-md font-medium text-xs transition-colors select-none ${
                   isSigned
                     ? "text-white"
                     : !hasSignature

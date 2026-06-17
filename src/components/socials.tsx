@@ -2,7 +2,7 @@ import "../App.css";
 const Socials = () => {
   return (
     <section className="next-steps w-full">
-      <div className="social w-full border-t border-border">
+      <div className="social w-full border-t border-black/24">
         <ul>
           <li>
             <a href="https://github.com/aliugloria" target="_blank">
